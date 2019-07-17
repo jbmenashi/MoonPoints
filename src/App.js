@@ -1,6 +1,13 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import './App.css';
+import {connect} from 'react-redux'
+
+const mapStateToProps = state => {
+   return {
+      users: state.users
+   }
+}
 
 function App() {
   return (
@@ -18,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
