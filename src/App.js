@@ -8,10 +8,10 @@ function App() {
          <Router>
             <>
             <h1>Moon Points!</h1>
-            <Route exact path="/" render={() => (this.props.currentUserId !== undefined ? (<Redirect to="/home"/>) : (<Login/>))}/>
+            {/* <Route exact path="/" render={() => (this.props.currentUserId !== undefined ? (<Redirect to="/home"/>) : (<Login/>))}/>
             <Route path="/home" component={HomeContainer}/>
             <Route path="/standings" component={StandingsContainer}/>
-            <Route path="/stats" component={StatsContainer}/>
+            <Route path="/stats" component={StatsContainer}/> */}
             </>
          </Router>
     </div>
