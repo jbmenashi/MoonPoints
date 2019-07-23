@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      setUserId: (id, username) => dispatch({type: "SET_USER", id: id, username: username}),
+      setUser: (id, username) => dispatch({type: "SET_USER", id: id, username: username}),
       inputUsername: (input) => dispatch({type: "INPUT_USERNAME", payload: input.target.value})
    }
 }
@@ -20,10 +20,33 @@ const mapDispatchToProps = dispatch => {
 class Login extends Component {
 
    submitUsername = (input) => {
-      console.log(input)
+      fetch('http://localhost:3001/users')
+      .then(res => res.json())
+      .then(data => {
+         let foundUser = data.find(user => user.username === input)
+         // console.log(foundUser)
+         if (foundUser) {
+            this.props.setUser(foundUser._id, foundUser.username)
+         }
+         else {
+            fetch('http://localhost:3001/users', {
+               method: 'POST',
+               headers: {
+                  'Content-Type':'application/json',
+               },
+               body: JSON.stringify({
+                  username: input,
+                  bio: 'I am a moon buffoon'
+               })
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+         }
+      })
    }
 
    render() { 
+      console.log(this.props)
       return ( 
          <div>
             <h3>Login</h3>

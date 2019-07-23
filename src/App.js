@@ -1,18 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import './App.css';
-import {connect} from 'react-redux'
 import Login from './components/Login'
 import HomeContainer from './containers/HomeContainer'
 import StandingsContainer from './containers/StandingsContainer'
 import StatsContainer from './containers/StatsContainer'
-
-const mapStateToProps = state => {
-   return {
-      users: state.users,
-      currentUserId: state.currentUserId
-   }
-}
 
 function App(props) {
   return (
@@ -30,4 +22,4 @@ function App(props) {
   );
 }
 
-export default connect(mapStateToProps)(App);
+export default App;
