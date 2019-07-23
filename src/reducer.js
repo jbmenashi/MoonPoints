@@ -1,11 +1,17 @@
 const initialState = {
    users: [],
-   currentUserId: undefined
+   currentUserId: undefined,
+   currentUsername: undefined,
+   usernameInput: ''
 }
 
 const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
+   switch (action.type) {
+      case "SET_USER":
+         return {...state, currentUserId: action.id, currentUsername: action.username}
+      case "INPUT_USERNAME":
+         return {...state, usernameInput: action.payload}
+   default:
       return state
   }
 }
