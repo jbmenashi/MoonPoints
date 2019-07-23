@@ -40,7 +40,7 @@ class Login extends Component {
                })
             })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => this.props.setUser(data._id, data.username))
          }
       })
    }
